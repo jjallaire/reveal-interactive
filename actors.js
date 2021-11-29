@@ -1,14 +1,15 @@
-const regression = require('d3-regression@1');
+import * as regression from 'https://cdn.skypack.dev/d3-regression';
+import * as d3 from 'https://cdn.skypack.dev/d3';
 
-export function plotActors(actors) {
-  
+export function plotActors(actors, talentWeight, looksWeight, minimum) {
+    
   actors = transpose(actors).map(v => ({
     talent: v.x,
     looks: v.y,
     fame: v.x * talentWeight + v.y * looksWeight
   }));
 
-  const w = 700
+  const w = 700;
   const h = 500;
   const result = d3.create("svg").attr("width", w).attr("height", h);
   const margin = 20;
