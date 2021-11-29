@@ -1,0 +1,39 @@
+---
+title: "reveal-htmlwidgets"
+format: revealjs
+---
+
+## Plotly
+
+```{r}
+library(ggplot2)
+library(plotly)
+p <- ggplot(data = diamonds, aes(x = cut, fill = clarity)) +
+            geom_bar(position = "dodge")
+ggplotly(p)
+```
+
+## Leaflet
+
+```{r}
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
+```
+
+## ThreeJS
+
+```{r}
+library(threejs)
+data(LeMis)
+graphjs(LeMis, layout=layout_with_fr(LeMis, dim=3))
+```
+
+## Dygraphs
+
+```{r}
+library(dygraphs)
+dygraph(nhtemp, main = "New Haven Temperatures") %>% 
+  dyRangeSelector(dateWindow = c("1920-01-01", "1960-01-01"))
+```
